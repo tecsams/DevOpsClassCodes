@@ -17,7 +17,12 @@ node{
             sh 'mvn pmd:pmd'
         }
     }
-    stage('AB Package'){
+    stage('AB Test'){
+        withMaven(maven:'MyMaven'){
+            sh 'mvn test'
+        }
+    }
+        stage('AB Package'){
         withMaven(maven:'MyMaven'){
             sh 'mvn package'
         }

@@ -22,6 +22,11 @@ node{
             sh 'mvn test'
         }
     }
+      stage('AB Coverage'){
+        withMaven(maven:'MyMaven'){
+            sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
+        }
+    }
         stage('AB Package'){
         withMaven(maven:'MyMaven'){
             sh 'mvn package'
